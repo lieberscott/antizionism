@@ -96,8 +96,6 @@ export default function Test(props) {
 
     const importedJson = await data.json();
 
-    console.log("importedJson : ", importedJson);
-
   }
   
   

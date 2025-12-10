@@ -9,15 +9,9 @@ import { fetchMonth, fetchNext } from "../../data/query";
 
 /*
 
+1. Collapse all rhetoric folders into single "rhetorical games" file (?)
 
-1b. The issue with deleteing certain category folders is that examples from categories you DO want may be in those folders that you deleted.
-- Make a list of preferred categories by categoryId, and write a function to move examples from "second-class" category files to preferred category files.
-
-2. Collapse all rhetoric folders into single "rhetorical games" file (?)
-
-3. Have Heidi review it
-
-4. Add manual Tweet cards (not using the Twitter widget and TweetIds, but having all the data stored in a database) and then displaying it
+2. Add manual Tweet cards (not using the Twitter widget and TweetIds, but having all the data stored in a database) and then displaying it
 
 */
 
@@ -72,9 +66,6 @@ export default function MainPage() {
   }
 
 const findNextExample = (_dateString, _findNext, _findPrev) => {
-  console.log("dateString : ", _dateString);
-  console.log("_findNext : ", _findNext);
-  console.log('findNextExample claimId. ', claimId);
 
     const [hasExample, newDate] = checkForNextDatesData(_findNext); // if we want next, findNext is true; else findNext is false (and we want previous)
 
@@ -99,7 +90,6 @@ const findNextExample = (_dateString, _findNext, _findPrev) => {
         }));
       }
       else {
-        console.log("next");
         const responseData =  fetchNext(_dateString, keywordId, claimId, searchText, _findNext, _findPrev);
         handleNextResponse(responseData);
       }
@@ -134,7 +124,6 @@ const findNextExample = (_dateString, _findNext, _findPrev) => {
 
 
   const handleNextResponse = (_responseData) => {
-    console.log("handleNextResponse : ", _responseData);
     if (_responseData.noTarget) {
       // window.alert(`No results. Try a different search criteria.`);
     }
@@ -142,8 +131,6 @@ const findNextExample = (_dateString, _findNext, _findPrev) => {
 
       const newDate = _responseData.nextDate; // both next or previous dates, depending on which direction we're going
       const newData = _responseData.data[newDate] ? _responseData.data[newDate] : defaultDayData;
-
-      console.log("changeMonth 2: ", new Date(newDate));
 
       setViewState(prev => ({
         ...prev,
@@ -165,9 +152,7 @@ const findNextExample = (_dateString, _findNext, _findPrev) => {
 
   // _claimIdSelected will be a string or "" (if none)
   const onClaimSelect = (_claimIdSelected) => {
-    console.log("laimIDSelected : , ", _claimIdSelected);
     const newClaimId = _claimIdSelected === "" ? null : _claimIdSelected;
-    console.log("newClaimId : ", newClaimId);
     const findNext = true;
     const findPrev = false;
     const responseData =  fetchNext(viewState.displayedDate, keywordId, newClaimId, searchText, findNext, findPrev);
@@ -214,8 +199,6 @@ const findNextExample = (_dateString, _findNext, _findPrev) => {
       usTweetsIndex: index
     }));
   }
-
-  console.log("viewState : ", viewState);
 
 
   if (!loaded) {

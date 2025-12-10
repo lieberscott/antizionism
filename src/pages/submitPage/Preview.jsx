@@ -6,8 +6,6 @@ function Preview({ previewData, viewMode }) {
   const { claim, explanation, them, us } = previewData;
   const displayedDate = "preview";
 
-  console.log("them : ", them);
-
   const [themTweetsIndex, setThemTweetsIndex] = useState(0);
   const [usTweetsIndex, setUsTweetsIndex] = useState(0);
 

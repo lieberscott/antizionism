@@ -17,10 +17,6 @@ const Calendar = ({ onDateSelect, summaryData, displayedDate, calendarDate }) =>
     const newYear = newDate.getFullYear();
     const newMonth = newDate.getMonth();
 
-    // console.log("newYear 1 :", newYear);
-    // console.log("NewMonth 1 : ", newMonth);
-    // console.log("changeMonth 1: ", new Date(year, month, "01"));
-
     // need to add +1 back to the month, because new Date() (above) is 0-indexed, so January is 0 and September is 8.
     // But for the onDateSelect, we want the actual months 1-indexed, so January is 01 and September is 09
     // In each case - nextMonth or prevMonth - we add 1 to the month
