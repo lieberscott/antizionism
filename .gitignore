@@ -1,0 +1,16 @@
+node_modules
+web_modules
+.firebase
+.firebaserc
+.glitchdotcom.json
+build
+src/pages_original
+src/tweets_by_category
+src/tweets_new_design
+tweets_by_category
+updated_tweets
+.cache
+.config
+.data
+tweets_new_design
+src/firebaseConfig.js
