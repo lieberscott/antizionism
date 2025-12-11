@@ -25,7 +25,7 @@ export default function Home() {
         <div className="links">
           <Link href="/"><div className="linksText">Home</div></Link>
           <span className="divider">|</span>
-          <Link href="submit"><div className="linksText">Submit Your Own Example</div></Link>
+          <Link href="/submit"><div className="linksText">Submit Your Own Example</div></Link>
         </div>
         <div className="content">
           {/* Router specifies which component to insert here as the main content */}

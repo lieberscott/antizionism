@@ -2,13 +2,32 @@
 
 Your new site is all yours so it doesn't matter if you break it! Try editing the code.
 
-Let's add the wiggle function to other elements in the site–you'll see comments in the code with `TODO` in them for each step.
-
-In `pages/about.jsx`, add the imports at the top:
+How to redeploy manually (from a manually created tmp folder in the Documents folder)
 
 ```js
-import { useWiggle } from "../hooks/wiggle";
-import { animated } from "react-spring";
+cd
+
+cd Documents/israel_website_v2
+
+npm run build
+
+cd ../
+
+mkdir tmp
+
+cd tmp
+
+cp -R /Users/scottlieber/Documents/israel_website_v2/build/* .
+touch .nojekyll         
+
+git init                                                      
+git checkout -b gh-pages
+git add .
+git commit -m "Manual gh-pages deploy"
+git remote add origin https://github.com/lieberscott/antizionism.git
+git push -f origin gh-pages
+
+
 ```
 
 Bring the wiggle style and trigger function in before the `return` statement, this time with slightly different parameters:
