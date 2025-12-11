@@ -20,12 +20,12 @@ import PageRouter from "./components/router.jsx";
 // Home function that is reflected across the site
 export default function Home() {
   return (
-    <Router>
+    <Router base="/antizionism">
       <main role="main" className="wrapper">
         <div className="links">
           <Link href="/"><div className="linksText">Home</div></Link>
           <span className="divider">|</span>
-          <Link href="/submit"><div className="linksText">Submit Your Own Example</div></Link>
+          <Link href="submit"><div className="linksText">Submit Your Own Example</div></Link>
         </div>
         <div className="content">
           {/* Router specifies which component to insert here as the main content */}

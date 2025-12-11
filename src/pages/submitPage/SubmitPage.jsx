@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Preview from "./Preview.jsx"; // reuse your existing component for preview
 import "../../styles/submitStyles.css";
 import { claims } from "../../data/db.js";
-import { submitExample } from "../../../api/api.js";
+import tweetidImg from "../../../images/tweetid.png";
 
 
 function SubmitPage() {
@@ -224,7 +224,7 @@ function SubmitPage() {
 
 
       <img
-        src="./images/tweetid.png"
+        src={tweetidImg}
         alt="Where to find TweetIds"
         className="form-image"
       />

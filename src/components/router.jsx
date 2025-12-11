@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Switch, Route, Router } from "wouter";
 
-import Test from "../pages/singleExample/Test.jsx";
 import MainPage from "../pages/singleExample/MainPage.jsx";
 import SubmitPage from "../pages/submitPage/SubmitPage.jsx";
 
@@ -15,8 +14,8 @@ import SubmitPage from "../pages/submitPage/SubmitPage.jsx";
 
 export default () => (
   <Switch>
+    <Route path="/submit" component={ SubmitPage } />
     <Route path="/" component={MainPage} />
     {/* <Route path="/test" component={Test} /> */}
-    <Route path="/submit" component={ SubmitPage } />
   </Switch>
 );
