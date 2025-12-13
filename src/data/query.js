@@ -227,12 +227,12 @@ export const fetchMonth = (dateString, keywordId, claimId, searchQuery = "", fin
 /** Get next or previous month's data */
 export const fetchNext = (dateString, keywordId, claimId, searchQuery, findNext, findPrev) => {
 
-  // console.log("dateString 2 : ", dateString);
+  console.log("dateString 2 : ", dateString);
 
-  // console.log("claimId : ", claimId);
+  console.log("claimId : ", claimId);
 
-  // console.log("findNext : ", findNext);
-  // console.log("findPrev : ", findPrev);
+  console.log("findNext : ", findNext);
+  console.log("findPrev : ", findPrev);
 
   const searchText = searchQuery === "" ? null : searchQuery.trim().toLowerCase();
 
@@ -240,9 +240,12 @@ export const fetchNext = (dateString, keywordId, claimId, searchQuery, findNext,
   // On the front end, it already accounts for that (backend ordering may be different than front end)
   // so we increment the day by +1 to ensure the "next" or previous example isn't on the same day
   // Same logic applies to findPrev examples, decrement the day -1
-  const newDateString = findNext ? shiftDate(dateString, "incremeent"): findPrev ? shiftDate(dateString, "decrement") : dateString;
+  let newDateString = findNext ? shiftDate(dateString, "incremeent"): findPrev ? shiftDate(dateString, "decrement") : dateString;
 
-  // console.log("newDateString 3 : ", newDateString);
+  const [y, m, d = "01"] = newDateString.split("-");
+  newDateString = `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
+
+  console.log("newDateString 3 : ", newDateString);
 
   // When arrowing forward or backward on the Calendar, you want the next (or previous) month, even if they have no matching examples
   if (!findNext && !findPrev) {
@@ -251,6 +254,8 @@ export const fetchNext = (dateString, keywordId, claimId, searchQuery, findNext,
 
     // This line of code ensures that if an actual Example exists for the given month, it will display on the front end rather than having it blank
     const returnedDate = Object.keys(summaryData).length ? Object.keys(summaryData)[0] : newDateString;
+
+    console.log("returnedDate : ", returnedDate);
 
     return { data, summaryData, nextDate: returnedDate }
   }

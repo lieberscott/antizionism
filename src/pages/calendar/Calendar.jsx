@@ -4,6 +4,9 @@ import "../../styles/calendarStyles.css"; // import the CSS file
 const Calendar = ({ onDateSelect, summaryData, displayedDate, calendarDate }) => {
   // const [calendarDate, setCalendarDate] = useState(new Date(displayedDate));
 
+  console.log("displayedDate 5 : ", displayedDate);
+  console.log("calendarDate5 : ", calendarDate);
+
 
   // Move to previous month
   const changeMonth = (direction) => {
@@ -12,10 +15,13 @@ const Calendar = ({ onDateSelect, summaryData, displayedDate, calendarDate }) =>
     const year = calendarDate.getFullYear();
     const month = direction === "next" ? calendarDate.getMonth() + 1 : calendarDate.getMonth() - 1;
 
+    console.log("month : ", month);
     const newDate = new Date(year, month, "1");
 
     const newYear = newDate.getFullYear();
     const newMonth = newDate.getMonth();
+
+    console.log("newMonth 1 : ", newMonth);
 
     // need to add +1 back to the month, because new Date() (above) is 0-indexed, so January is 0 and September is 8.
     // But for the onDateSelect, we want the actual months 1-indexed, so January is 01 and September is 09
@@ -48,6 +54,7 @@ const Calendar = ({ onDateSelect, summaryData, displayedDate, calendarDate }) =>
 
   const year = calendarDate.getFullYear();
   const month = calendarDate.getMonth();
+  console.log("month : ", month);
   const days = useMemo(() => getDaysInMonth(year, month), [year, month, summaryData]);
 
   const handleDateClick = (key) => {

@@ -44,6 +44,7 @@ export default function MainPage() {
   }, []);
 
   const onDateSelect = (_dateString, _getNextMonth) => {
+    console.log("_dateString 1 : ", _dateString);
 
     if (_getNextMonth) {
       const responseData =  fetchNext(_dateString, keywordId, claimId, searchText);
@@ -129,8 +130,11 @@ const findNextExample = (_dateString, _findNext, _findPrev) => {
     }
     else {
 
-      const newDate = _responseData.nextDate; // both next or previous dates, depending on which direction we're going
+      let newDate = _responseData.nextDate; // both next or previous dates, depending on which direction we're going
+      const [y, m, d] = newDate.split("-").map(Number); // needed to prevent timezone offsets
       const newData = _responseData.data[newDate] ? _responseData.data[newDate] : defaultDayData;
+
+      console.log("newData 4 : ", newData);
 
       setViewState(prev => ({
         ...prev,
@@ -141,7 +145,7 @@ const findNextExample = (_dateString, _findNext, _findPrev) => {
         themTweetsIndex: 0,
         usTweetsIndex: 0,
         currentIndex: 0,
-        calendarDate: new Date(newDate)
+        calendarDate: new Date(y, m - 1, d) // new Date(y, m, d) prevents timezone offests, whereas new Date ("yyyy-mm-dd") includes a timezone offset
       }));
      
       if (!loaded) {
@@ -307,7 +311,7 @@ const findNextExample = (_dateString, _findNext, _findPrev) => {
           </div>
         }
       </div>
-      <p className="font-bold mb-2 text-gray-700"><a target="_blank" href="https://icons8.com/icon/6bf4WpRiadUV/israel">Israel</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></p>
+      {/* <p className="font-bold mb-2 text-gray-700"><a target="_blank" href="https://icons8.com/icon/6bf4WpRiadUV/israel">Israel</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></p> */}
     </div>
   );
 }
